@@ -54,6 +54,8 @@
     
             return (value = true) => {
                 const attr = 'disabled'
+
+                buttonElement.removeEventListener('click', initializeFn.bind(this))
     
                 if(value){
                     buttonElement.setAttribute(attr, true)
