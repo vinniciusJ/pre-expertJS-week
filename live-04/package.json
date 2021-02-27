@@ -1,0 +1,17 @@
+{
+  "name": "live-04",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test:dev": "npx mocha -w --exit test/",
+    "test": "npx mocha --parallel test/",
+    "test:cov": "npx nyc --check-coverage --instrument --reporter=html --reporter=text npm test",
+    "start": "node src/"
+  },
+  "dependencies": {
+    "mocha": "8",
+    "nyc": "15",
+    "sinon": "9"
+  }
+}
