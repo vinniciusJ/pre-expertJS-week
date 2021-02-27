@@ -1,3 +1,5 @@
+const https = require('https')
+
 class Request{
     errorTimeout(reject, urlRequest){
         return () => reject(new Error(`timeout at ${urlRequest}`))
@@ -10,7 +12,16 @@ class Request{
     }
 
     async get(url){
+        return new Promise((resolve, reject) => {
+            https.get(url, response => {
+                const items = []
+    
+                response
+                    .on('data', data => items.push(data))
+                    .on('end', () => resolve(JSON.parse(items.join('')))) 
 
+            }).on('error', reject)
+        })
     }
 
     async makeRequest({ url, method, timeout }){
